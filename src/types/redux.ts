@@ -1,6 +1,6 @@
 import { Movie, Genre } from "./movie"
 
-export type ReduxStateClear = {
+export type ReduxState = {
     movies: Array<Movie>,
     genres: Array<Genre>,
     filterParam: string,
@@ -9,15 +9,13 @@ export type ReduxStateClear = {
     error: string
 }
 
-export type ReduxState = ReduxStateClear | undefined;
-
 export type ReduxAction = {
     type: ActionsList,
     payload?: any
 }
 
 export type ActionsList =
-    'FETCH_MOVIES' |
+    // 'FETCH_MOVIES' |
     'FETCH_MOVIES_ERROR' |
     'IS_LOADING' |
     'SET_MOVIES' |

@@ -14,7 +14,7 @@ const defaultState: ReduxState = {
 
 const movieCatalogueReducer: Reducer<ReduxState, ReduxAction> = 
     (state: ReduxState = defaultState, { type, payload }: ReduxAction): ReduxState => {
-        const actionMap: Partial<MovieCatalogueReducerResult> = {
+        const actionMap: MovieCatalogueReducerResult = {
             FETCH_MOVIES_ERROR: {
                 ...state,
                 error: payload

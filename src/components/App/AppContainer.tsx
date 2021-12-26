@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { AppViewer } from './AppViewer';
 import { fetchMoviesAction, filterAction, searchAction } from '../../redux/reducers/movieCatalogueActions';
-import { ReduxState, ReduxStateClear } from '../../types/redux';
+import { ReduxState } from '../../types/redux';
 import { Dispatch } from 'react';
 import { StateProps, DispatchProps } from './types';
 import { Movie } from '../../types';
@@ -32,7 +32,7 @@ const applySearch = (
     return result;
 };
 
-const mapStateToProps = ({ genres, movies, isLoading, filterParam, searchParam }: ReduxStateClear): StateProps => ({
+const mapStateToProps = ({ genres, movies, isLoading, filterParam, searchParam }: ReduxState): StateProps => ({
     genres,
     movies: applySearch(applyFilter(movies, filterParam), searchParam),
     isLoading

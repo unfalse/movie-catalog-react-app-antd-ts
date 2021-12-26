@@ -3,7 +3,7 @@ import { RawMoviesData, Movie, Genre } from '../../types/movie';
 import { ReduxActions } from '../../types/redux';
 
 const ACTIONS: ReduxActions = {
-    FETCH_MOVIES: 'FETCH_MOVIES',
+    // FETCH_MOVIES: 'FETCH_MOVIES',
     FETCH_MOVIES_ERROR: 'FETCH_MOVIES_ERROR',
     IS_LOADING: 'IS_LOADING',
     SET_MOVIES: 'SET_MOVIES',
