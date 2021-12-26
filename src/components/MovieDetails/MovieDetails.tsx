@@ -1,6 +1,6 @@
 import React, { useEffect, useState, FunctionComponent } from 'react';
 import { match, RouteComponentProps } from 'react-router';
-import { Tag, Button } from 'antd';
+import { Tag, Button, Typography } from 'antd';
 
 import { fetchMovie } from '../../apis';
 import { ImgFallback } from '../ImgFallback';
@@ -12,6 +12,8 @@ import './styles.css';
 interface Props extends RouteComponentProps {
     match: match<any>; // TODO: fix any !!! =)
 }
+
+const { Title } = Typography;
 
 const MovieDetails: FunctionComponent<Props> = ({ match, history }) => {
     const { id } = match.params;
@@ -28,7 +30,7 @@ const MovieDetails: FunctionComponent<Props> = ({ match, history }) => {
             }
         }
         scopedFetchMovie();
-    }, []);
+    }, [id]);
 
     const {
         posterUrl = '',
@@ -45,8 +47,8 @@ const MovieDetails: FunctionComponent<Props> = ({ match, history }) => {
             <Button onClick={goBack}>
                 Return to movie list
             </Button>
-            <div className="movie-details center">
-                <div className="title">{title}</div>
+            <div className="movie-details_center">
+                <Title level={2}>{title}</Title>
                 <div className="movie-details__genres">
                     {genres.map((g) => (
                         <Tag color="geekblue" key={g}>

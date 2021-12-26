@@ -19,9 +19,9 @@ const Routes: React.FunctionComponent = () => {
     };
 
     return (
-        <Layout className="layout">
-            <Router>
-                <Header style={{background: '#fff'}}>
+        <Router>
+            <Layout className="layout">
+                <Header style={{ background: '#fff' }}>
                     <AppTitle onClick={resetAndGoHome} />
                 </Header>
                 <Content style={{ padding: '0 50px' }}>
@@ -35,10 +35,10 @@ const Routes: React.FunctionComponent = () => {
                     </div>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>
-                    <Copyright/>
+                    <Copyright />
                 </Footer>
-            </Router>
-        </Layout>
+            </Layout>
+        </Router>
     );
 }
 
