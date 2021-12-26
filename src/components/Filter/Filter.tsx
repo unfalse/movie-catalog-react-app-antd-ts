@@ -1,5 +1,6 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import { Select, Row, Col } from 'antd';
 
 import { getQueryParams, getQueryParamsString } from '../../utils/url';
 import { Genre } from '../../types';
@@ -9,6 +10,8 @@ interface Props {
     onFilter(filterParam: string): void;
 }
 
+const { Option } = Select;
+
 const Filter: React.FunctionComponent<Props> = ({
     genres = ['None'],
     onFilter,
@@ -17,69 +20,55 @@ const Filter: React.FunctionComponent<Props> = ({
     const location = useLocation();
     const { filterParam = 'None' } = getQueryParams(location);
 
-    const onOptionClick = (e: ChangeEvent<HTMLSelectElement>) => {
-        const filterValue = e.target.value;
+    const onSelect = (selectedValue: string) => {
         history.push(
             `${getQueryParamsString(
-                { newFilter: filterValue, newPage: 1 },
+                { newFilter: selectedValue, newPage: 1 },
                 location
             )}`
         );
-        onFilter(filterValue);
+        onFilter(selectedValue);
     };
 
     const selectOptions = [
-        <option key={'None'} value="">
+        <Option key={'None'} value="">
             None
-        </option>,
+        </Option>,
         ...genres.map((genre: string, genreIndex: number) => {
             return (
-                <option key={`${genre}${genreIndex}`} value={genre}>
+                <Option key={`${genre}${genreIndex}`} value={genre}>
                     {genre}
-                </option>
+                </Option>
             );
         }),
     ];
 
     return (
-        <div className="columns">
-            <div className="column is-narrow">
-                <div className="field is-horizontal box" style={{ width: 90 }}>
-                    <div className="field-label is-normal">
-                        <label className="label">Filter by</label>
-                    </div>
+        <Row style={{ margin: 10 }}>
+            <Col span={4}>
+                <div>
+                    <label className="label">
+                        Filter by
+                    </label>
                 </div>
-            </div>
-            <div className="column">
-                <div className="field-body">
-                    <div className="field">
-                        <div className="control">
-                            <div className="select is-fullwidth">
-                                <select>
-                                    <option value="genre">genre</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="column">
-                <div className="field-body">
-                    <div className="field">
-                        <div className="control">
-                            <div className="select is-fullwidth">
-                                <select
-                                    value={filterParam}
-                                    onChange={onOptionClick}
-                                >
-                                    {selectOptions}
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            </Col>
+            <Col span={10}>
+                <Select defaultValue="genre" style={{width:'100%', paddingRight: 20}}>
+                    <Option value="genre">
+                        genre
+                    </Option>
+                </Select>
+            </Col>
+            <Col span={10}>
+                <Select
+                    value={filterParam}
+                    onSelect={onSelect}
+                    style={{ width: '100%' }}
+                >
+                    {selectOptions}
+                </Select>
+            </Col>
+        </Row>
     );
 };
 

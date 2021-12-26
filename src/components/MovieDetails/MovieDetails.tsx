@@ -1,5 +1,6 @@
 import React, { useEffect, useState, FunctionComponent } from 'react';
 import { match, RouteComponentProps } from 'react-router';
+import { Tag, Button } from 'antd';
 
 import { fetchMovie } from '../../apis';
 import { ImgFallback } from '../ImgFallback';
@@ -41,16 +42,16 @@ const MovieDetails: FunctionComponent<Props> = ({ match, history }) => {
     } = movie;
     return (
         <div>
-            <button className="button" onClick={goBack}>
+            <Button onClick={goBack}>
                 Return to movie list
-            </button>
+            </Button>
             <div className="movie-details center">
                 <div className="title">{title}</div>
                 <div className="movie-details__genres">
                     {genres.map((g) => (
-                        <span className="tag is-info" key={g}>
+                        <Tag color="geekblue" key={g}>
                             {g}
-                        </span>
+                        </Tag>
                     ))}
                 </div>
                 <div className="movie-details__year">{year}</div>

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Row, Col } from 'antd';
 
 import MovieList from '../MovieList';
 import { Pagination } from '../Pagination';
@@ -22,11 +23,11 @@ const AppViewer: React.FunctionComponent<Props> = ({
         fetchMovies(filterParam, searchParam);
     }, []);
     return (
-        <div>
-            <div>
+        <>
+            <>
                 <Filter genres={genres} onFilter={onFilter} />
                 <Search onSearch={onSearch} />
-            </div>
+            </>
             <div>
                 <Pagination
                     WrappedComponent={MovieList}
@@ -34,7 +35,7 @@ const AppViewer: React.FunctionComponent<Props> = ({
                     loading={isLoading}
                 />
             </div>
-        </div>
+        </>
     );
 };
 

@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { useLocation, RouteComponentProps } from 'react-router-dom';
+import { Tag } from 'antd';
 
 import { MyLoader } from '../MyLoader';
 import { ImgFallback } from '../ImgFallback';
@@ -57,7 +58,7 @@ export const MovieList: FunctionComponent<Props> = ({ movies = [], history, load
                         </div>
                         <div className="movie-list__short-info-genres">
                             {genres.map((g: string) => (
-                                <span key={g} className="tag is-info">{g}</span>
+                                <Tag key={g} color="geekblue">{g}</Tag>
                             ))}
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-const Footer: FunctionComponent = () => (
+const Copyright: FunctionComponent = () => (
     <footer className="footer">
         <div className="content has-text-centered">
             <div>(c) 2019 by Nopefish</div>
@@ -21,4 +21,4 @@ const Footer: FunctionComponent = () => (
     </footer>
 );
 
-export { Footer };
+export { Copyright };
